@@ -1,0 +1,3523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="only light">
+  <title>Le Repaire — Menu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      background: #f0e8da !important;
+      color: #1a1a1a !important;
+    }
+
+    body {
+      background: #f0e8da !important;
+      color: #1a1a1a !important;
+      font-family: 'EB Garamond', serif;
+      min-height: 100vh;
+    }
+
+    :root {
+      --cream: #f0e8da;
+      --red: #8b1a1a;
+      --black: #1a1a1a;
+      --grey: #555;
+    }
+
+    /* LANG SELECTOR */
+    .lang-bar {
+      background: #f0e8da !important;
+      display: flex;
+      justify-content: flex-end;
+      padding: 8px 16px 0;
+      gap: 6px;
+    }
+    .lang-bar button {
+      background: none;
+      border: 1px solid #ccc4b4;
+      border-radius: 2px;
+      font-family: 'EB Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      cursor: pointer;
+      color: #888;
+      transition: all 0.2s;
+    }
+    .lang-bar button.active, .lang-bar button:hover {
+      background: #8b1a1a;
+      border-color: #8b1a1a;
+      color: white;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 28px 24px 20px;
+      border-bottom: 2px solid #8b1a1a;
+      background: #f0e8da !important;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #8b1a1a;
+      margin-bottom: 6px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 11vw, 72px);
+      font-weight: 900;
+      line-height: 1;
+      color: #1a1a1a !important;
+      text-transform: uppercase;
+    }
+    .logo span { color: #8b1a1a; }
+    .tagline {
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #1a1a1a !important;
+    }
+    .tagline span { color: #8b1a1a; margin: 0 8px; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #1a1a1a !important;
+      display: flex;
+      justify-content: flex-start;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav::-webkit-scrollbar { display: none; }
+    nav button {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: #888;
+      font-family: 'EB Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 13px 16px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    nav button:hover { color: #ccc; }
+    nav button.active { color: #8b1a1a; border-bottom-color: #8b1a1a; }
+
+    /* SECTIONS */
+    .section {
+      display: none;
+      padding: 36px 20px 60px;
+      max-width: 580px;
+      margin: 0 auto;
+      animation: fadeIn 0.25s ease;
+      background: #f0e8da !important;
+    }
+    .section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 18%;
+      height: 1px;
+      background: #8b1a1a;
+      opacity: 0.5;
+    }
+    .section-title::before { left: 0; }
+    .section-title::after { right: 0; }
+    .section-title h2 {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1.5px solid #8b1a1a;
+      padding: 7px 18px;
+      color: #1a1a1a !important;
+      background: #f0e8da !important;
+    }
+
+    .sub-title {
+      text-align: center;
+      margin: 30px 0 18px;
+    }
+    .sub-title h3 {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: 1px solid #8b1a1a;
+      padding: 5px 16px;
+      color: #1a1a1a !important;
+      background: #f0e8da !important;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #ddd5c4;
+    }
+    .item:last-child { border-bottom: none; }
+    .item-left { flex: 1; }
+    .item-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a1a !important;
+    }
+    .item-desc {
+      font-size: 13px;
+      color: #555 !important;
+      font-style: italic;
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+    .item-price {
+      font-size: 15px;
+      font-weight: 600;
+      color: #8b1a1a !important;
+      white-space: nowrap;
+    }
+
+    .table-header {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1.5px solid #8b1a1a;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555 !important;
+      font-weight: 600;
+    }
+    .table-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 8px;
+      padding: 11px 0;
+      border-bottom: 1px solid #ddd5c4;
+      align-items: baseline;
+    }
+    .table-row:last-child { border-bottom: none; }
+    .table-row .name { font-size: 16px; font-weight: 600; color: #1a1a1a !important; }
+    .table-row .price { font-size: 14px; color: #8b1a1a !important; font-weight: 600; text-align: right; }
+    .col-right { text-align: right; }
+
+    .note {
+      font-size: 13px;
+      font-style: italic;
+      color: #555 !important;
+      text-align: center;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed #ccc4b4;
+    }
+
+    .formule {
+      background: white !important;
+      border: 1.5px solid #8b1a1a;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+    .formule-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #1a1a1a !important;
+      margin-bottom: 8px;
+    }
+    .formule-desc {
+      font-size: 15px;
+      color: #555 !important;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .formule-price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #8b1a1a !important;
+    }
+
+    .hh-card {
+      background: #1a1a1a !important;
+      color: white !important;
+      padding: 22px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .hh-title { font-family: 'Playfair Display', serif; font-size: 22px; color: white !important; margin-bottom: 4px; }
+    .hh-hours { font-size: 13px; letter-spacing: 0.15em; color: #aaa !important; margin-bottom: 16px; }
+    .hh-items { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .hh-item { text-align: center; }
+    .hh-item-name { font-size: 16px; font-weight: 600; color: white !important; }
+    .hh-item-sub { font-size: 13px; color: #aaa !important; font-style: italic; }
+    .hh-item-price {
+      display: inline-block;
+      background: #8b1a1a !important;
+      color: white !important;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 3px 10px;
+      margin-top: 6px;
+    }
+
+    /* HOME LIST */
+    .home-list {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 8px 20px 40px;
+    }
+    .home-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 4px;
+      border-bottom: 1px solid #ddd5c4;
+      cursor: pointer;
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'EB Garamond', serif;
+      transition: background 0.15s;
+    }
+    .home-item:first-child { border-top: 1px solid #ddd5c4; }
+    .home-item:active { background: rgba(139,26,26,0.06); }
+    .home-text { flex: 1; }
+    .home-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #1a1a1a !important;
+      letter-spacing: 0.02em;
+    }
+    .home-chevron {
+      color: #8b1a1a !important;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* BACK BAR */
+    .back-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #1a1a1a !important;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .back-btn {
+      background: none;
+      border: none;
+      color: white !important;
+      font-family: 'EB Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+    }
+    .back-current {
+      color: #c98a8a !important;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    footer {
+      background: #1a1a1a !important;
+      color: white !important;
+      text-align: center;
+      padding: 22px 16px;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+    }
+    footer .sub { color: #888 !important; margin-top: 5px; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="active" onclick="setLang('fr', this)">🇫🇷 FR</button>
+  <button onclick="setLang('en', this)">🇬🇧 EN</button>
+  <button onclick="setLang('es', this)">🇪🇸 ES</button>
+  <button onclick="setLang('de', this)">🇩🇪 DE</button>
+</div>
+
+<header>
+  <p class="eyebrow">— Brasserie —</p>
+  <div class="logo">Le <span>Repaire</span></div>
+  <p class="tagline">Brasserie <span>•</span> Bar <span>•</span> Cocktails</p>
+</header>
+
+<div id="back-bar-container"></div>
+
+<div id="content"></div>
+
+<footer>
+  <div>📍 <strong>2 bd Ornano, Paris 18</strong></div>
+  <div class="sub">01 42 52 56 16 &nbsp;·&nbsp; @brasserie.le.repaire</div>
+</footer>
+
+<script>
+const translations = {
+  "fr": {
+    "tabs": [
+      "Menus",
+      "Entrées",
+      "Salades",
+      "Grillades",
+      "Pâtes",
+      "Snack",
+      "Sandwich",
+      "Planche à Partager",
+      "Fromages",
+      "Desserts",
+      "Boissons"
+    ],
+    "sections": [
+      {
+        "id": "menus",
+        "title": "Menus & Formules",
+        "type": "menus",
+        "hh": {
+          "title": "Happy Hour",
+          "hours": "17h – 22h",
+          "items": [
+            {
+              "name": "Pintes de Blonde",
+              "price": "3,70€"
+            },
+            {
+              "name": "Cocktails",
+              "sub": "Spritz Apérol",
+              "price": "5,50€"
+            }
+          ]
+        },
+        "formules": [
+          {
+            "name": "Menu",
+            "desc": "Entrée au choix, plat du jour,\ndessert au choix ou 1/4 de vin",
+            "price": "18,50€"
+          },
+          {
+            "name": "Formule Express",
+            "desc": "Plat du jour\nEntrée au choix ou dessert au choix\nou 1/4 de vin",
+            "price": "15,00€"
+          }
+        ]
+      },
+      {
+        "id": "entrees",
+        "title": "Entrées",
+        "items": [
+          {
+            "name": "Avocat à la vinaigrette",
+            "price": "6,50€"
+          },
+          {
+            "name": "Filet de hareng",
+            "price": "6,00€"
+          },
+          {
+            "name": "Œuf Mayonnaise",
+            "price": "6,00€"
+          },
+          {
+            "name": "Thon Mayonnaise",
+            "price": "6,00€"
+          },
+          {
+            "name": "Saucisson sec",
+            "price": "6,00€"
+          },
+          {
+            "name": "Salade Crudités",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "salades",
+        "title": "Salades Composées",
+        "items": [
+          {
+            "name": "Salade Végétarienne",
+            "price": "11,00€"
+          },
+          {
+            "name": "Salade César",
+            "desc": "Salade verte, œufs durs, poulet, tomate, maïs",
+            "price": "13,00€"
+          },
+          {
+            "name": "Salade Niçoise",
+            "desc": "Salade verte, œufs durs, tomates, anchois, thon, maïs",
+            "price": "13,00€"
+          },
+          {
+            "name": "Salade Paysanne",
+            "desc": "Salade, tomates, œuf, jambon de pays, avocat, fromage",
+            "price": "13,50€"
+          },
+          {
+            "name": "Salade de Crottin de Chèvre Chaud",
+            "desc": "Salade verte, œufs durs, tomates, crottins de chèvre sur toast",
+            "price": "12,50€"
+          },
+          {
+            "name": "Salade de Chef",
+            "desc": "Jambon, Gruyère, Œuf, Tomate",
+            "price": "12,50€"
+          },
+          {
+            "name": "Quiche du Jour",
+            "desc": "Salade ou frites",
+            "price": "10,00€"
+          }
+        ]
+      },
+      {
+        "id": "grillades",
+        "title": "Grillades",
+        "items": [
+          {
+            "name": "Rumsteack au poivre",
+            "price": "14,00€"
+          },
+          {
+            "name": "Pavé de rumsteack en sauce",
+            "price": "16,50€"
+          },
+          {
+            "name": "Faux-Filet",
+            "desc": "Sauce Béarnaise",
+            "price": "16,50€"
+          },
+          {
+            "name": "Poulet Roti",
+            "price": "13,70€"
+          },
+          {
+            "name": "Steack Haché",
+            "price": "13,70€"
+          },
+          {
+            "name": "Steack Haché à Cheval",
+            "price": "15,00€"
+          },
+          {
+            "name": "Escalope de volaille à la crème",
+            "price": "14,50€"
+          },
+          {
+            "name": "Andouillette grillée",
+            "price": "14,50€"
+          },
+          {
+            "name": "Hamburger maison",
+            "price": "15,00€"
+          }
+        ],
+        "note": "Garniture : frites, salade, riz ou haricots verts"
+      },
+      {
+        "id": "pates",
+        "title": "Pâtes",
+        "items": [
+          {
+            "name": "Pâtes Paysanne",
+            "price": "14,00€"
+          },
+          {
+            "name": "Fettuccine au saumon",
+            "price": "15,00€"
+          },
+          {
+            "name": "Pâtes Carbonara",
+            "price": "14,50€"
+          }
+        ]
+      },
+      {
+        "id": "snack",
+        "title": "Snack",
+        "items": [
+          {
+            "name": "Omelette Mixte",
+            "desc": "Jambon, fromage, frites maison, salade",
+            "price": "12,50€"
+          },
+          {
+            "name": "Omelette Fromage",
+            "price": "11,50€"
+          },
+          {
+            "name": "Omelette Jambon",
+            "price": "11,50€"
+          },
+          {
+            "name": "Saucisse Frites Maison",
+            "price": "10,00€"
+          },
+          {
+            "name": "Croque Madame",
+            "price": "8,00€"
+          },
+          {
+            "name": "Croque Madame",
+            "desc": "Salade, frites",
+            "price": "10,50€"
+          },
+          {
+            "name": "Croque Repaire",
+            "desc": "Salade verte",
+            "price": "9,00€"
+          },
+          {
+            "name": "Croque Nature",
+            "price": "7,00€"
+          },
+          {
+            "name": "Assiette de Frites Maison",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "sandwich",
+        "title": "Sandwich",
+        "items": [
+          {
+            "name": "Crudité Thon",
+            "price": "6,00€"
+          },
+          {
+            "name": "Jambon Emmental",
+            "price": "6,00€"
+          },
+          {
+            "name": "Jambon de Pays",
+            "price": "6,00€"
+          },
+          {
+            "name": "Jambon",
+            "price": "4,00€"
+          },
+          {
+            "name": "Hot Dog",
+            "price": "6,50€"
+          },
+          {
+            "name": "Sam Club",
+            "desc": "Salade, tomate, œuf, jambon",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crudité Poulet",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "planche",
+        "title": "Planche à Partager",
+        "items": [
+          {
+            "name": "Jambon de Paris",
+            "price": "6,00€"
+          },
+          {
+            "name": "Saucisson sec",
+            "price": "8,00€"
+          },
+          {
+            "name": "Terrine",
+            "price": "7,00€"
+          },
+          {
+            "name": "Rillettes",
+            "price": "7,00€"
+          },
+          {
+            "name": "Emmental",
+            "price": "6,50€"
+          },
+          {
+            "name": "Mixte",
+            "price": "12,00€"
+          }
+        ]
+      },
+      {
+        "id": "fromages",
+        "title": "Fromages / Cheeses",
+        "items": [
+          {
+            "name": "Cantal",
+            "price": "7,00€"
+          },
+          {
+            "name": "Emmental ou Coulommiers",
+            "price": "6,00€"
+          },
+          {
+            "name": "Chèvre ou Gruyère",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "desserts",
+        "title": "Desserts",
+        "items": [
+          {
+            "name": "Tarte du jour",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crème Caramel",
+            "price": "6,00€"
+          },
+          {
+            "name": "Mousse au Chocolat",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crème Brûlée",
+            "price": "6,00€"
+          },
+          {
+            "name": "Panna Cotta Aux Fruits Rouges",
+            "price": "6,00€"
+          },
+          {
+            "name": "Tiramisu",
+            "price": "6,00€"
+          },
+          {
+            "name": "Salade de Fruits",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "boissons",
+        "title": "Boissons",
+        "type": "boissons",
+        "subsections": [
+          {
+            "title": "Vins au Verre",
+            "cols": [
+              "Vin",
+              "14cl",
+              ""
+            ],
+            "rows": [
+              [
+                "Côtes du Rhône",
+                "4,00€",
+                ""
+              ],
+              [
+                "Sauvignon / Chardonnay",
+                "4,00€",
+                ""
+              ],
+              [
+                "Rosé",
+                "4,00€",
+                ""
+              ],
+              [
+                "Bordeaux",
+                "4,00€",
+                ""
+              ],
+              [
+                "Brouilly",
+                "4,60€",
+                ""
+              ]
+            ]
+          },
+          {
+            "title": "Vins d'Algérie (bouteille)",
+            "cols": [
+              "Vin",
+              "Format",
+              "Prix"
+            ],
+            "rows": [
+              [
+                "Koutoubia",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Cuvée de Tlemcen",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Saint-Augustin",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Boulaouane",
+                "75cl",
+                "30,00€"
+              ]
+            ]
+          },
+          {
+            "title": "Eaux Minérales",
+            "cols": [
+              "Eau",
+              "50cl",
+              "1L"
+            ],
+            "rows": [
+              [
+                "Vittel",
+                "4,00€",
+                "6,00€"
+              ],
+              [
+                "Badoit",
+                "4,00€",
+                "7,00€"
+              ],
+              [
+                "Perrier",
+                "4,40€",
+                "—"
+              ]
+            ]
+          },
+          {
+            "title": "Bières Pression",
+            "cols": [
+              "Bière",
+              "25cl",
+              "50cl"
+            ],
+            "rows": [
+              [
+                "Stella",
+                "3,70€",
+                "7,00€"
+              ],
+              [
+                "Heineken",
+                "4,00€",
+                "7,50€"
+              ],
+              [
+                "1664",
+                "4,00€",
+                "7,50€"
+              ],
+              [
+                "Leffe",
+                "4,30€",
+                "7,80€"
+              ],
+              [
+                "Hoegaarden",
+                "4,40€",
+                "7,80€"
+              ]
+            ]
+          },
+          {
+            "title": "Bières Bouteille",
+            "cols": [
+              "Bière",
+              "",
+              "Prix"
+            ],
+            "rows": [
+              [
+                "Heineken",
+                "",
+                "4,00€"
+              ],
+              [
+                "1664",
+                "",
+                "4,00€"
+              ],
+              [
+                "Leffe",
+                "",
+                "4,30€"
+              ],
+              [
+                "Hoegaarden",
+                "",
+                "4,40€"
+              ],
+              [
+                "Monaco",
+                "",
+                "4,00€"
+              ],
+              [
+                "Pelforth",
+                "",
+                "5,50€"
+              ],
+              [
+                "Desperados",
+                "",
+                "5,50€"
+              ]
+            ]
+          },
+          {
+            "title": "Bières sans alcool",
+            "simple": [
+              {
+                "name": "Super Bock",
+                "price": "3,50€"
+              }
+            ]
+          },
+          {
+            "title": "Sodas",
+            "cols": [
+              "Soda",
+              "Format",
+              "Prix"
+            ],
+            "rows": [
+              [
+                "Coca-Cola",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Coca-Cola sans sucres",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Fanta Orange",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Schweppes Indian Tonic",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Schweppes Agrum",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Orangina",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Ice Tea",
+                "25cl",
+                "4,40€"
+              ]
+            ]
+          },
+          {
+            "title": "Jus de Fruits",
+            "simple": [
+              {
+                "name": "Jus de fruits",
+                "price": "4,00€"
+              },
+              {
+                "name": "Jus de Tomate",
+                "price": "5,00€"
+              },
+              {
+                "name": "Diabolo",
+                "price": "4,00€"
+              },
+              {
+                "name": "Limonade",
+                "price": "3,50€"
+              },
+              {
+                "name": "Vittel Sirop",
+                "price": "3,00€"
+              },
+              {
+                "name": "Sirop à l'eau",
+                "price": "3,00€"
+              },
+              {
+                "name": "Lait Froid",
+                "price": "3,00€"
+              }
+            ]
+          },
+          {
+            "title": "Boissons Chaudes",
+            "simple": [
+              {
+                "name": "Café Expresso",
+                "price": "2,40€"
+              },
+              {
+                "name": "Café Crème",
+                "price": "3,50€"
+              },
+              {
+                "name": "Chocolat Chaud",
+                "price": "3,50€"
+              },
+              {
+                "name": "Thé",
+                "price": "3,50€"
+              },
+              {
+                "name": "Lait Chaud",
+                "price": "3,00€"
+              }
+            ]
+          },
+          {
+            "title": "Apéritifs",
+            "simple": [
+              {
+                "name": "Martini",
+                "price": "6,00€"
+              },
+              {
+                "name": "Pastis, Ricard",
+                "price": "4,00€"
+              },
+              {
+                "name": "Porto",
+                "price": "4,00€"
+              },
+              {
+                "name": "Suze",
+                "price": "4,00€"
+              },
+              {
+                "name": "Kir",
+                "price": "4,00€"
+              },
+              {
+                "name": "Whisky J&B",
+                "price": "6,50€"
+              },
+              {
+                "name": "Spritz",
+                "price": "7,00€"
+              }
+            ]
+          },
+          {
+            "title": "Whiskies",
+            "simple": [
+              {
+                "name": "J&B",
+                "price": "6,50€"
+              },
+              {
+                "name": "Campbell",
+                "price": "6,50€"
+              },
+              {
+                "name": "Chivas",
+                "price": "8,00€"
+              },
+              {
+                "name": "Johnny Walker",
+                "price": "7,50€"
+              },
+              {
+                "name": "Jack Daniel's",
+                "price": "8,00€"
+              },
+              {
+                "name": "Black Label",
+                "price": "8,00€"
+              }
+            ]
+          },
+          {
+            "title": "Liqueurs",
+            "simple": [
+              {
+                "name": "Rhum",
+                "price": "5,00€"
+              },
+              {
+                "name": "Calvados",
+                "price": "5,00€"
+              },
+              {
+                "name": "Armagnac",
+                "price": "7,00€"
+              },
+              {
+                "name": "Mirabelle",
+                "price": "7,50€"
+              },
+              {
+                "name": "Cognac",
+                "price": "7,00€"
+              },
+              {
+                "name": "Get 27",
+                "price": "6,50€"
+              },
+              {
+                "name": "Poire Williams",
+                "price": "7,50€"
+              }
+            ]
+          },
+          {
+            "title": "Cocktails",
+            "simple": [
+              {
+                "name": "Punch Rhum",
+                "price": "7,00€"
+              },
+              {
+                "name": "Mojito",
+                "price": "7,00€"
+              },
+              {
+                "name": "Chiraya'o Cocktail",
+                "price": "7,00€"
+              },
+              {
+                "name": "Pina Colada",
+                "price": "8,00€"
+              },
+              {
+                "name": "Swimming Pool",
+                "price": "8,00€"
+              },
+              {
+                "name": "Vodka Daisy",
+                "price": "8,00€"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "tabs": [
+      "Menus",
+      "Starters",
+      "Salads",
+      "Grills",
+      "Pasta",
+      "Snack",
+      "Sandwich",
+      "Sharing Board",
+      "Cheese",
+      "Desserts",
+      "Drinks"
+    ],
+    "sections": [
+      {
+        "id": "menus",
+        "title": "Menus & Deals",
+        "type": "menus",
+        "hh": {
+          "title": "Happy Hour",
+          "hours": "5pm – 10pm",
+          "items": [
+            {
+              "name": "Blonde Pints",
+              "price": "3.70€"
+            },
+            {
+              "name": "Cocktails",
+              "sub": "Aperol Spritz",
+              "price": "5.50€"
+            }
+          ]
+        },
+        "formules": [
+          {
+            "name": "Menu",
+            "desc": "Starter of your choice, daily special,\ndessert or 1/4 wine",
+            "price": "18.50€"
+          },
+          {
+            "name": "Express Deal",
+            "desc": "Daily special\nStarter or dessert of your choice\nor 1/4 wine",
+            "price": "15.00€"
+          }
+        ]
+      },
+      {
+        "id": "entrees",
+        "title": "Starters",
+        "items": [
+          {
+            "name": "Avocado vinaigrette",
+            "price": "6.50€"
+          },
+          {
+            "name": "Herring fillet",
+            "price": "6.00€"
+          },
+          {
+            "name": "Egg Mayonnaise",
+            "price": "6.00€"
+          },
+          {
+            "name": "Tuna Mayonnaise",
+            "price": "6.00€"
+          },
+          {
+            "name": "Dry sausage",
+            "price": "6.00€"
+          },
+          {
+            "name": "Raw vegetable salad",
+            "price": "6.00€"
+          }
+        ]
+      },
+      {
+        "id": "salades",
+        "title": "Composed Salads",
+        "items": [
+          {
+            "name": "Vegetarian Salad",
+            "price": "11.00€"
+          },
+          {
+            "name": "Caesar Salad",
+            "desc": "Green salad, hard-boiled eggs, chicken, tomato, corn",
+            "price": "13.00€"
+          },
+          {
+            "name": "Niçoise Salad",
+            "desc": "Green salad, hard-boiled eggs, tomatoes, anchovies, tuna, corn",
+            "price": "13.00€"
+          },
+          {
+            "name": "Country Salad",
+            "desc": "Salad, tomatoes, egg, cured ham, avocado, cheese",
+            "price": "13.50€"
+          },
+          {
+            "name": "Warm Goat Cheese Salad",
+            "desc": "Green salad, hard-boiled eggs, tomatoes, goat cheese on toast",
+            "price": "12.50€"
+          },
+          {
+            "name": "Chef's Salad",
+            "desc": "Ham, Gruyère, Egg, Tomato",
+            "price": "12.50€"
+          },
+          {
+            "name": "Quiche of the Day",
+            "desc": "Salad or fries",
+            "price": "10.00€"
+          }
+        ]
+      },
+      {
+        "id": "grillades",
+        "title": "Grills",
+        "items": [
+          {
+            "name": "Peppered Rump Steak",
+            "price": "14.00€"
+          },
+          {
+            "name": "Rump Steak in sauce",
+            "price": "16.50€"
+          },
+          {
+            "name": "Sirloin Steak",
+            "desc": "Béarnaise Sauce",
+            "price": "16.50€"
+          },
+          {
+            "name": "Roast Chicken",
+            "price": "13.70€"
+          },
+          {
+            "name": "Minced Steak",
+            "price": "13.70€"
+          },
+          {
+            "name": "Minced Steak with Egg",
+            "price": "15.00€"
+          },
+          {
+            "name": "Chicken Escalope in cream",
+            "price": "14.50€"
+          },
+          {
+            "name": "Grilled Andouillette",
+            "price": "14.50€"
+          },
+          {
+            "name": "Homemade Burger",
+            "price": "15.00€"
+          }
+        ],
+        "note": "Side dish: fries, salad, rice or green beans"
+      },
+      {
+        "id": "pates",
+        "title": "Pasta",
+        "items": [
+          {
+            "name": "Country Pasta",
+            "price": "14.00€"
+          },
+          {
+            "name": "Salmon Fettuccine",
+            "price": "15.00€"
+          },
+          {
+            "name": "Carbonara Pasta",
+            "price": "14.50€"
+          }
+        ]
+      },
+      {
+        "id": "snack",
+        "title": "Snack",
+        "items": [
+          {
+            "name": "Mixed Omelette",
+            "desc": "Ham, cheese, homemade fries, salad",
+            "price": "12.50€"
+          },
+          {
+            "name": "Cheese Omelette",
+            "price": "11.50€"
+          },
+          {
+            "name": "Ham Omelette",
+            "price": "11.50€"
+          },
+          {
+            "name": "Sausage & Homemade Fries",
+            "price": "10.00€"
+          },
+          {
+            "name": "Croque Madame",
+            "price": "8.00€"
+          },
+          {
+            "name": "Croque Madame",
+            "desc": "Salad, fries",
+            "price": "10.50€"
+          },
+          {
+            "name": "Croque Repaire",
+            "desc": "Green salad",
+            "price": "9.00€"
+          },
+          {
+            "name": "Plain Croque",
+            "price": "7.00€"
+          },
+          {
+            "name": "Homemade Fries",
+            "price": "6.00€"
+          }
+        ]
+      },
+      {
+        "id": "sandwich",
+        "title": "Sandwich",
+        "items": [
+          {
+            "name": "Tuna & Crudités",
+            "price": "6.00€"
+          },
+          {
+            "name": "Ham & Emmental",
+            "price": "6.00€"
+          },
+          {
+            "name": "Country Ham",
+            "price": "6.00€"
+          },
+          {
+            "name": "Ham",
+            "price": "4.00€"
+          },
+          {
+            "name": "Hot Dog",
+            "price": "6.50€"
+          },
+          {
+            "name": "Sam Club",
+            "desc": "Salad, tomato, egg, ham",
+            "price": "6.00€"
+          },
+          {
+            "name": "Chicken & Crudités",
+            "price": "6.00€"
+          }
+        ]
+      },
+      {
+        "id": "planche",
+        "title": "Sharing Board",
+        "items": [
+          {
+            "name": "Paris Ham",
+            "price": "6.00€"
+          },
+          {
+            "name": "Dry Sausage",
+            "price": "8.00€"
+          },
+          {
+            "name": "Terrine",
+            "price": "7.00€"
+          },
+          {
+            "name": "Rillettes",
+            "price": "7.00€"
+          },
+          {
+            "name": "Emmental",
+            "price": "6.50€"
+          },
+          {
+            "name": "Mixed Board",
+            "price": "12.00€"
+          }
+        ]
+      },
+      {
+        "id": "fromages",
+        "title": "Cheeses",
+        "items": [
+          {
+            "name": "Cantal",
+            "price": "7.00€"
+          },
+          {
+            "name": "Emmental or Coulommiers",
+            "price": "6.00€"
+          },
+          {
+            "name": "Goat cheese or Gruyère",
+            "price": "6.00€"
+          }
+        ]
+      },
+      {
+        "id": "desserts",
+        "title": "Desserts",
+        "items": [
+          {
+            "name": "Pie of the Day",
+            "price": "6.00€"
+          },
+          {
+            "name": "Crème Caramel",
+            "price": "6.00€"
+          },
+          {
+            "name": "Chocolate Mousse",
+            "price": "6.00€"
+          },
+          {
+            "name": "Crème Brûlée",
+            "price": "6.00€"
+          },
+          {
+            "name": "Panna Cotta with Red Fruits",
+            "price": "6.00€"
+          },
+          {
+            "name": "Tiramisu",
+            "price": "6.00€"
+          },
+          {
+            "name": "Fruit Salad",
+            "price": "6.00€"
+          }
+        ]
+      },
+      {
+        "id": "boissons",
+        "title": "Drinks",
+        "type": "boissons",
+        "subsections": [
+          {
+            "title": "Wine by the Glass",
+            "cols": [
+              "Wine",
+              "14cl",
+              ""
+            ],
+            "rows": [
+              [
+                "Côtes du Rhône",
+                "4.00€",
+                ""
+              ],
+              [
+                "Sauvignon / Chardonnay",
+                "4.00€",
+                ""
+              ],
+              [
+                "Rosé",
+                "4.00€",
+                ""
+              ],
+              [
+                "Bordeaux",
+                "4.00€",
+                ""
+              ],
+              [
+                "Brouilly",
+                "4.60€",
+                ""
+              ]
+            ]
+          },
+          {
+            "title": "Algerian Wines (bottle)",
+            "cols": [
+              "Wine",
+              "Size",
+              "Price"
+            ],
+            "rows": [
+              [
+                "Koutoubia",
+                "75cl",
+                "30.00€"
+              ],
+              [
+                "Cuvée de Tlemcen",
+                "75cl",
+                "30.00€"
+              ],
+              [
+                "Saint-Augustin",
+                "75cl",
+                "30.00€"
+              ],
+              [
+                "Boulaouane",
+                "75cl",
+                "30.00€"
+              ]
+            ]
+          },
+          {
+            "title": "Mineral Water",
+            "cols": [
+              "Water",
+              "50cl",
+              "1L"
+            ],
+            "rows": [
+              [
+                "Vittel",
+                "4.00€",
+                "6.00€"
+              ],
+              [
+                "Badoit",
+                "4.00€",
+                "7.00€"
+              ],
+              [
+                "Perrier",
+                "4.40€",
+                "—"
+              ]
+            ]
+          },
+          {
+            "title": "Draft Beer",
+            "cols": [
+              "Beer",
+              "25cl",
+              "50cl"
+            ],
+            "rows": [
+              [
+                "Stella",
+                "3.70€",
+                "7.00€"
+              ],
+              [
+                "Heineken",
+                "4.00€",
+                "7.50€"
+              ],
+              [
+                "1664",
+                "4.00€",
+                "7.50€"
+              ],
+              [
+                "Leffe",
+                "4.30€",
+                "7.80€"
+              ],
+              [
+                "Hoegaarden",
+                "4.40€",
+                "7.80€"
+              ]
+            ]
+          },
+          {
+            "title": "Bottled Beer",
+            "cols": [
+              "Beer",
+              "",
+              "Price"
+            ],
+            "rows": [
+              [
+                "Heineken",
+                "",
+                "4.00€"
+              ],
+              [
+                "1664",
+                "",
+                "4.30€"
+              ],
+              [
+                "Leffe",
+                "",
+                "4.30€"
+              ],
+              [
+                "Hoegaarden",
+                "",
+                "4.40€"
+              ],
+              [
+                "Monaco",
+                "",
+                "4.00€"
+              ]
+            ]
+          },
+          {
+            "title": "Non-Alcoholic Beer",
+            "simple": [
+              {
+                "name": "Super Bock",
+                "price": "3.50€"
+              }
+            ]
+          },
+          {
+            "title": "Sodas",
+            "cols": [
+              "Soda",
+              "Size",
+              "Price"
+            ],
+            "rows": [
+              [
+                "Coca-Cola",
+                "33cl",
+                "4.40€"
+              ],
+              [
+                "Coca-Cola Zero",
+                "33cl",
+                "4.40€"
+              ],
+              [
+                "Fanta Orange",
+                "33cl",
+                "4.40€"
+              ],
+              [
+                "Schweppes Indian Tonic",
+                "25cl",
+                "4.40€"
+              ],
+              [
+                "Schweppes Citrus",
+                "25cl",
+                "4.40€"
+              ],
+              [
+                "Orangina",
+                "25cl",
+                "4.40€"
+              ],
+              [
+                "Ice Tea",
+                "25cl",
+                "4.40€"
+              ]
+            ]
+          },
+          {
+            "title": "Fruit Juices",
+            "simple": [
+              {
+                "name": "Fruit Juice",
+                "price": "4.00€"
+              },
+              {
+                "name": "Tomato Juice",
+                "price": "5.00€"
+              },
+              {
+                "name": "Diabolo",
+                "price": "4.00€"
+              },
+              {
+                "name": "Lemonade",
+                "price": "3.50€"
+              },
+              {
+                "name": "Syrup with water",
+                "price": "3.00€"
+              },
+              {
+                "name": "Cold Milk",
+                "price": "3.00€"
+              }
+            ]
+          },
+          {
+            "title": "Hot Drinks",
+            "simple": [
+              {
+                "name": "Espresso",
+                "price": "2.40€"
+              },
+              {
+                "name": "Coffee with Cream",
+                "price": "3.50€"
+              },
+              {
+                "name": "Hot Chocolate",
+                "price": "3.50€"
+              },
+              {
+                "name": "Tea",
+                "price": "3.50€"
+              },
+              {
+                "name": "Hot Milk",
+                "price": "3.00€"
+              }
+            ]
+          },
+          {
+            "title": "Aperitifs",
+            "simple": [
+              {
+                "name": "Martini",
+                "price": "6.00€"
+              },
+              {
+                "name": "Pastis, Ricard",
+                "price": "4.00€"
+              },
+              {
+                "name": "Port",
+                "price": "4.00€"
+              },
+              {
+                "name": "Suze",
+                "price": "4.00€"
+              },
+              {
+                "name": "Kir",
+                "price": "4.00€"
+              },
+              {
+                "name": "Whisky J&B",
+                "price": "6.50€"
+              },
+              {
+                "name": "Spritz",
+                "price": "7.00€"
+              },
+              {
+                "name": "Heineken",
+                "price": "4.00€"
+              },
+              {
+                "name": "1664",
+                "price": "4.00€"
+              },
+              {
+                "name": "Pelforth",
+                "price": "5.50€"
+              },
+              {
+                "name": "Desperados",
+                "price": "5.50€"
+              }
+            ]
+          },
+          {
+            "title": "Whiskies",
+            "simple": [
+              {
+                "name": "J&B",
+                "price": "6.50€"
+              },
+              {
+                "name": "Campbell",
+                "price": "6.50€"
+              },
+              {
+                "name": "Chivas",
+                "price": "8.00€"
+              },
+              {
+                "name": "Johnny Walker",
+                "price": "7.50€"
+              },
+              {
+                "name": "Jack Daniel's",
+                "price": "8.00€"
+              },
+              {
+                "name": "Black Label",
+                "price": "8.00€"
+              }
+            ]
+          },
+          {
+            "title": "Liqueurs",
+            "simple": [
+              {
+                "name": "Rum",
+                "price": "5.00€"
+              },
+              {
+                "name": "Calvados",
+                "price": "5.00€"
+              },
+              {
+                "name": "Armagnac",
+                "price": "7.00€"
+              },
+              {
+                "name": "Mirabelle",
+                "price": "7.50€"
+              },
+              {
+                "name": "Cognac",
+                "price": "7.00€"
+              },
+              {
+                "name": "Get 27",
+                "price": "6.50€"
+              },
+              {
+                "name": "Poire Williams",
+                "price": "7.00€"
+              }
+            ]
+          },
+          {
+            "title": "Cocktails",
+            "simple": [
+              {
+                "name": "Rum Punch",
+                "price": "7.00€"
+              },
+              {
+                "name": "Mojito",
+                "price": "7.00€"
+              },
+              {
+                "name": "Chiraya'o Cocktail",
+                "price": "7.00€"
+              },
+              {
+                "name": "Pina Colada",
+                "price": "8.00€"
+              },
+              {
+                "name": "Swimming Pool",
+                "price": "8.00€"
+              },
+              {
+                "name": "Vodka Daisy",
+                "price": "8.00€"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "es": {
+    "tabs": [
+      "Menús",
+      "Entrantes",
+      "Ensaladas",
+      "Parrilla",
+      "Pasta",
+      "Snack",
+      "Sandwich",
+      "Tabla para Compartir",
+      "Quesos",
+      "Postres",
+      "Bebidas"
+    ],
+    "sections": [
+      {
+        "id": "menus",
+        "title": "Menús & Fórmulas",
+        "type": "menus",
+        "hh": {
+          "title": "Happy Hour",
+          "hours": "17h – 22h",
+          "items": [
+            {
+              "name": "Pintas de Rubia",
+              "price": "3,70€"
+            },
+            {
+              "name": "Cócteles",
+              "sub": "Spritz Aperol",
+              "price": "5,50€"
+            }
+          ]
+        },
+        "formules": [
+          {
+            "name": "Menú",
+            "desc": "Entrante a elegir, plato del día,\npostre a elegir o 1/4 de vino",
+            "price": "18,50€"
+          },
+          {
+            "name": "Fórmula Express",
+            "desc": "Plato del día\nEntrante o postre a elegir\no 1/4 de vino",
+            "price": "15,00€"
+          }
+        ]
+      },
+      {
+        "id": "entrees",
+        "title": "Entrantes",
+        "items": [
+          {
+            "name": "Aguacate con vinagreta",
+            "price": "6,50€"
+          },
+          {
+            "name": "Filete de arenque",
+            "price": "6,00€"
+          },
+          {
+            "name": "Huevo con mayonesa",
+            "price": "6,00€"
+          },
+          {
+            "name": "Atún con mayonesa",
+            "price": "6,00€"
+          },
+          {
+            "name": "Salchichón",
+            "price": "6,00€"
+          },
+          {
+            "name": "Ensalada de crudités",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "salades",
+        "title": "Ensaladas Compuestas",
+        "items": [
+          {
+            "name": "Ensalada Vegetariana",
+            "price": "11,00€"
+          },
+          {
+            "name": "Ensalada César",
+            "desc": "Lechuga, huevos duros, pollo, tomate, maíz",
+            "price": "13,00€"
+          },
+          {
+            "name": "Ensalada Nizarda",
+            "desc": "Lechuga, huevos duros, tomates, anchoas, atún, maíz",
+            "price": "13,00€"
+          },
+          {
+            "name": "Ensalada Campesina",
+            "desc": "Lechuga, tomates, huevo, jamón, aguacate, queso",
+            "price": "13,50€"
+          },
+          {
+            "name": "Ensalada de Queso de Cabra Caliente",
+            "desc": "Lechuga, huevos duros, tomates, queso de cabra tostado",
+            "price": "12,50€"
+          },
+          {
+            "name": "Ensalada del Chef",
+            "desc": "Jamón, Gruyère, Huevo, Tomate",
+            "price": "12,50€"
+          },
+          {
+            "name": "Quiche del Día",
+            "desc": "Ensalada o patatas fritas",
+            "price": "10,00€"
+          }
+        ]
+      },
+      {
+        "id": "grillades",
+        "title": "Parrilla",
+        "items": [
+          {
+            "name": "Entrecot a la pimienta",
+            "price": "14,00€"
+          },
+          {
+            "name": "Entrecot en salsa",
+            "price": "16,50€"
+          },
+          {
+            "name": "Falso Filete",
+            "desc": "Salsa Bearnesa",
+            "price": "16,50€"
+          },
+          {
+            "name": "Pollo Asado",
+            "price": "13,70€"
+          },
+          {
+            "name": "Hamburguesa de ternera",
+            "price": "13,70€"
+          },
+          {
+            "name": "Hamburguesa con huevo",
+            "price": "15,00€"
+          },
+          {
+            "name": "Escalope de pollo a la crema",
+            "price": "14,50€"
+          },
+          {
+            "name": "Andouillette a la parrilla",
+            "price": "14,50€"
+          },
+          {
+            "name": "Hamburguesa casera",
+            "price": "15,00€"
+          }
+        ],
+        "note": "Guarnición: patatas fritas, ensalada, arroz o judías verdes"
+      },
+      {
+        "id": "pates",
+        "title": "Pasta",
+        "items": [
+          {
+            "name": "Pasta Campesina",
+            "price": "14,00€"
+          },
+          {
+            "name": "Fettuccine al salmón",
+            "price": "15,00€"
+          },
+          {
+            "name": "Pasta Carbonara",
+            "price": "14,50€"
+          }
+        ]
+      },
+      {
+        "id": "snack",
+        "title": "Snack",
+        "items": [
+          {
+            "name": "Tortilla Mixta",
+            "desc": "Jamón, queso, patatas fritas caseras, ensalada",
+            "price": "12,50€"
+          },
+          {
+            "name": "Tortilla de Queso",
+            "price": "11,50€"
+          },
+          {
+            "name": "Tortilla de Jamón",
+            "price": "11,50€"
+          },
+          {
+            "name": "Salchicha con Patatas Fritas",
+            "price": "10,00€"
+          },
+          {
+            "name": "Croque Madame",
+            "price": "8,00€"
+          },
+          {
+            "name": "Croque Madame",
+            "desc": "Ensalada, patatas fritas",
+            "price": "10,50€"
+          },
+          {
+            "name": "Croque Repaire",
+            "desc": "Lechuga",
+            "price": "9,00€"
+          },
+          {
+            "name": "Croque Nature",
+            "price": "7,00€"
+          },
+          {
+            "name": "Patatas Fritas Caseras",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "sandwich",
+        "title": "Sandwich",
+        "items": [
+          {
+            "name": "Crudités con Atún",
+            "price": "6,00€"
+          },
+          {
+            "name": "Jamón y Emmental",
+            "price": "6,00€"
+          },
+          {
+            "name": "Jamón de Pueblo",
+            "price": "6,00€"
+          },
+          {
+            "name": "Jamón",
+            "price": "4,00€"
+          },
+          {
+            "name": "Hot Dog",
+            "price": "6,50€"
+          },
+          {
+            "name": "Sam Club",
+            "desc": "Ensalada, tomate, huevo, jamón",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crudités con Pollo",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "planche",
+        "title": "Tabla para Compartir",
+        "items": [
+          {
+            "name": "Jamón de París",
+            "price": "6,00€"
+          },
+          {
+            "name": "Salchichón",
+            "price": "8,00€"
+          },
+          {
+            "name": "Terrina",
+            "price": "7,00€"
+          },
+          {
+            "name": "Rillettes",
+            "price": "7,00€"
+          },
+          {
+            "name": "Emmental",
+            "price": "6,50€"
+          },
+          {
+            "name": "Tabla Mixta",
+            "price": "12,00€"
+          }
+        ]
+      },
+      {
+        "id": "fromages",
+        "title": "Quesos",
+        "items": [
+          {
+            "name": "Cantal",
+            "price": "7,00€"
+          },
+          {
+            "name": "Emmental o Coulommiers",
+            "price": "6,00€"
+          },
+          {
+            "name": "Queso de cabra o Gruyère",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "desserts",
+        "title": "Postres",
+        "items": [
+          {
+            "name": "Tarta del día",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crème Caramel",
+            "price": "6,00€"
+          },
+          {
+            "name": "Mousse de Chocolate",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crème Brûlée",
+            "price": "6,00€"
+          },
+          {
+            "name": "Panna Cotta con Frutos Rojos",
+            "price": "6,00€"
+          },
+          {
+            "name": "Tiramisú",
+            "price": "6,00€"
+          },
+          {
+            "name": "Macedonia de Frutas",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "boissons",
+        "title": "Bebidas",
+        "type": "boissons",
+        "subsections": [
+          {
+            "title": "Vinos por Copa",
+            "cols": [
+              "Vino",
+              "14cl",
+              ""
+            ],
+            "rows": [
+              [
+                "Côtes du Rhône",
+                "4,00€",
+                ""
+              ],
+              [
+                "Sauvignon / Chardonnay",
+                "4,00€",
+                ""
+              ],
+              [
+                "Rosado",
+                "4,00€",
+                ""
+              ],
+              [
+                "Bordeaux",
+                "4,00€",
+                ""
+              ],
+              [
+                "Brouilly",
+                "4,60€",
+                ""
+              ]
+            ]
+          },
+          {
+            "title": "Vinos de Argelia (botella)",
+            "cols": [
+              "Vino",
+              "Formato",
+              "Precio"
+            ],
+            "rows": [
+              [
+                "Koutoubia",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Cuvée de Tlemcen",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Saint-Augustin",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Boulaouane",
+                "75cl",
+                "30,00€"
+              ]
+            ]
+          },
+          {
+            "title": "Aguas Minerales",
+            "cols": [
+              "Agua",
+              "50cl",
+              "1L"
+            ],
+            "rows": [
+              [
+                "Vittel",
+                "4,00€",
+                "6,00€"
+              ],
+              [
+                "Badoit",
+                "4,00€",
+                "7,00€"
+              ],
+              [
+                "Perrier",
+                "4,40€",
+                "—"
+              ]
+            ]
+          },
+          {
+            "title": "Cerveza de Barril",
+            "cols": [
+              "Cerveza",
+              "25cl",
+              "50cl"
+            ],
+            "rows": [
+              [
+                "Stella",
+                "3,70€",
+                "7,00€"
+              ],
+              [
+                "Heineken",
+                "4,00€",
+                "7,50€"
+              ],
+              [
+                "1664",
+                "4,00€",
+                "7,50€"
+              ],
+              [
+                "Leffe",
+                "4,30€",
+                "7,80€"
+              ],
+              [
+                "Hoegaarden",
+                "4,40€",
+                "7,80€"
+              ]
+            ]
+          },
+          {
+            "title": "Cerveza Botella",
+            "cols": [
+              "Cerveza",
+              "",
+              "Precio"
+            ],
+            "rows": [
+              [
+                "Heineken",
+                "",
+                "4,00€"
+              ],
+              [
+                "1664",
+                "",
+                "4,00€"
+              ],
+              [
+                "Leffe",
+                "",
+                "4,30€"
+              ],
+              [
+                "Hoegaarden",
+                "",
+                "4,40€"
+              ],
+              [
+                "Monaco",
+                "",
+                "4,00€"
+              ]
+            ]
+          },
+          {
+            "title": "Cerveza sin Alcohol",
+            "simple": [
+              {
+                "name": "Super Bock",
+                "price": "3,50€"
+              }
+            ]
+          },
+          {
+            "title": "Refrescos",
+            "cols": [
+              "Refresco",
+              "Formato",
+              "Precio"
+            ],
+            "rows": [
+              [
+                "Coca-Cola",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Coca-Cola Zero",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Fanta Naranja",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Schweppes Indian Tonic",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Schweppes Cítrico",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Orangina",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Ice Tea",
+                "25cl",
+                "4,40€"
+              ]
+            ]
+          },
+          {
+            "title": "Zumos",
+            "simple": [
+              {
+                "name": "Zumo de frutas",
+                "price": "4,00€"
+              },
+              {
+                "name": "Zumo de Tomate",
+                "price": "5,00€"
+              },
+              {
+                "name": "Diabolo",
+                "price": "4,00€"
+              },
+              {
+                "name": "Limonada",
+                "price": "3,50€"
+              },
+              {
+                "name": "Sirope con agua",
+                "price": "3,00€"
+              },
+              {
+                "name": "Leche Fría",
+                "price": "3,00€"
+              }
+            ]
+          },
+          {
+            "title": "Bebidas Calientes",
+            "simple": [
+              {
+                "name": "Café Expreso",
+                "price": "2,40€"
+              },
+              {
+                "name": "Café con Leche",
+                "price": "3,50€"
+              },
+              {
+                "name": "Chocolate Caliente",
+                "price": "3,50€"
+              },
+              {
+                "name": "Té",
+                "price": "3,50€"
+              },
+              {
+                "name": "Leche Caliente",
+                "price": "3,00€"
+              }
+            ]
+          },
+          {
+            "title": "Aperitivos",
+            "simple": [
+              {
+                "name": "Martini",
+                "price": "6,00€"
+              },
+              {
+                "name": "Pastis, Ricard",
+                "price": "4,00€"
+              },
+              {
+                "name": "Oporto",
+                "price": "4,00€"
+              },
+              {
+                "name": "Suze",
+                "price": "4,00€"
+              },
+              {
+                "name": "Kir",
+                "price": "4,00€"
+              },
+              {
+                "name": "Whisky J&B",
+                "price": "6,50€"
+              },
+              {
+                "name": "Spritz",
+                "price": "7,00€"
+              }
+            ]
+          },
+          {
+            "title": "Whiskies",
+            "simple": [
+              {
+                "name": "J&B",
+                "price": "6,50€"
+              },
+              {
+                "name": "Campbell",
+                "price": "6,50€"
+              },
+              {
+                "name": "Chivas",
+                "price": "8,00€"
+              },
+              {
+                "name": "Johnny Walker",
+                "price": "7,50€"
+              },
+              {
+                "name": "Jack Daniel's",
+                "price": "8,00€"
+              },
+              {
+                "name": "Black Label",
+                "price": "8,00€"
+              }
+            ]
+          },
+          {
+            "title": "Licores",
+            "simple": [
+              {
+                "name": "Ron",
+                "price": "5,00€"
+              },
+              {
+                "name": "Calvados",
+                "price": "5,00€"
+              },
+              {
+                "name": "Armagnac",
+                "price": "7,00€"
+              },
+              {
+                "name": "Mirabelle",
+                "price": "7,50€"
+              },
+              {
+                "name": "Coñac",
+                "price": "7,00€"
+              },
+              {
+                "name": "Get 27",
+                "price": "6,50€"
+              },
+              {
+                "name": "Poire Williams",
+                "price": "7,50€"
+              }
+            ]
+          },
+          {
+            "title": "Cócteles",
+            "simple": [
+              {
+                "name": "Ron Punch",
+                "price": "7,00€"
+              },
+              {
+                "name": "Mojito",
+                "price": "7,00€"
+              },
+              {
+                "name": "Chiraya'o Cocktail",
+                "price": "7,00€"
+              },
+              {
+                "name": "Piña Colada",
+                "price": "8,00€"
+              },
+              {
+                "name": "Swimming Pool",
+                "price": "8,00€"
+              },
+              {
+                "name": "Vodka Daisy",
+                "price": "8,00€"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "de": {
+    "tabs": [
+      "Menüs",
+      "Vorspeisen",
+      "Salate",
+      "Grilladen",
+      "Pasta",
+      "Snack",
+      "Sandwich",
+      "Platte zum Teilen",
+      "Käse",
+      "Desserts",
+      "Getränke"
+    ],
+    "sections": [
+      {
+        "id": "menus",
+        "title": "Menüs & Formeln",
+        "type": "menus",
+        "hh": {
+          "title": "Happy Hour",
+          "hours": "17 – 22 Uhr",
+          "items": [
+            {
+              "name": "Helles Bier (Pint)",
+              "price": "3,70€"
+            },
+            {
+              "name": "Cocktails",
+              "sub": "Aperol Spritz",
+              "price": "5,50€"
+            }
+          ]
+        },
+        "formules": [
+          {
+            "name": "Menü",
+            "desc": "Vorspeise nach Wahl, Tagesgericht,\nDessert oder 1/4 Wein",
+            "price": "18,50€"
+          },
+          {
+            "name": "Express-Formel",
+            "desc": "Tagesgericht\nVorspeise oder Dessert nach Wahl\noder 1/4 Wein",
+            "price": "15,00€"
+          }
+        ]
+      },
+      {
+        "id": "entrees",
+        "title": "Vorspeisen",
+        "items": [
+          {
+            "name": "Avocado mit Vinaigrette",
+            "price": "6,50€"
+          },
+          {
+            "name": "Heringsfilet",
+            "price": "6,00€"
+          },
+          {
+            "name": "Ei mit Mayonnaise",
+            "price": "6,00€"
+          },
+          {
+            "name": "Thunfisch mit Mayonnaise",
+            "price": "6,00€"
+          },
+          {
+            "name": "Trockene Salami",
+            "price": "6,00€"
+          },
+          {
+            "name": "Rohkost-Salat",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "salades",
+        "title": "Gemischte Salate",
+        "items": [
+          {
+            "name": "Vegetarischer Salat",
+            "price": "11,00€"
+          },
+          {
+            "name": "César-Salat",
+            "desc": "Grüner Salat, hartgekochte Eier, Huhn, Tomate, Mais",
+            "price": "13,00€"
+          },
+          {
+            "name": "Niçoise-Salat",
+            "desc": "Grüner Salat, hartgekochte Eier, Tomaten, Sardellen, Thunfisch, Mais",
+            "price": "13,00€"
+          },
+          {
+            "name": "Bauern-Salat",
+            "desc": "Salat, Tomaten, Ei, Schinken, Avocado, Käse",
+            "price": "13,50€"
+          },
+          {
+            "name": "Warmer Ziegenkäse-Salat",
+            "desc": "Grüner Salat, hartgekochte Eier, Tomaten, Ziegenkäse auf Toast",
+            "price": "12,50€"
+          },
+          {
+            "name": "Chefs Salat",
+            "desc": "Schinken, Gruyère, Ei, Tomate",
+            "price": "12,50€"
+          },
+          {
+            "name": "Quiche des Tages",
+            "desc": "Salat oder Pommes",
+            "price": "10,00€"
+          }
+        ]
+      },
+      {
+        "id": "grillades",
+        "title": "Grilladen",
+        "items": [
+          {
+            "name": "Pfeffersteack",
+            "price": "14,00€"
+          },
+          {
+            "name": "Rumpsteack in Soße",
+            "price": "16,50€"
+          },
+          {
+            "name": "Falsches Filet",
+            "desc": "Sauce Béarnaise",
+            "price": "16,50€"
+          },
+          {
+            "name": "Brathähnchen",
+            "price": "13,70€"
+          },
+          {
+            "name": "Hacksteack",
+            "price": "13,70€"
+          },
+          {
+            "name": "Hacksteack mit Spiegelei",
+            "price": "15,00€"
+          },
+          {
+            "name": "Hähnchenschnitzel in Sahnesoße",
+            "price": "14,50€"
+          },
+          {
+            "name": "Gegrillte Andouillette",
+            "price": "14,50€"
+          },
+          {
+            "name": "Hausgemachter Burger",
+            "price": "15,00€"
+          }
+        ],
+        "note": "Beilage: Pommes, Salat, Reis oder grüne Bohnen"
+      },
+      {
+        "id": "pates",
+        "title": "Pasta",
+        "items": [
+          {
+            "name": "Bauern-Pasta",
+            "price": "14,00€"
+          },
+          {
+            "name": "Lachs-Fettuccine",
+            "price": "15,00€"
+          },
+          {
+            "name": "Pasta Carbonara",
+            "price": "14,50€"
+          }
+        ]
+      },
+      {
+        "id": "snack",
+        "title": "Snack",
+        "items": [
+          {
+            "name": "Gemischtes Omelett",
+            "desc": "Schinken, Käse, hausgemachte Pommes, Salat",
+            "price": "12,50€"
+          },
+          {
+            "name": "Käse-Omelett",
+            "price": "11,50€"
+          },
+          {
+            "name": "Schinken-Omelett",
+            "price": "11,50€"
+          },
+          {
+            "name": "Wurst mit Pommes",
+            "price": "10,00€"
+          },
+          {
+            "name": "Croque Madame",
+            "price": "8,00€"
+          },
+          {
+            "name": "Croque Madame",
+            "desc": "Salat, Pommes",
+            "price": "10,50€"
+          },
+          {
+            "name": "Croque Repaire",
+            "desc": "Grüner Salat",
+            "price": "9,00€"
+          },
+          {
+            "name": "Croque Nature",
+            "price": "7,00€"
+          },
+          {
+            "name": "Hausgemachte Pommes",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "sandwich",
+        "title": "Sandwich",
+        "items": [
+          {
+            "name": "Thunfisch & Rohkost",
+            "price": "6,00€"
+          },
+          {
+            "name": "Schinken & Emmental",
+            "price": "6,00€"
+          },
+          {
+            "name": "Landschinken",
+            "price": "6,00€"
+          },
+          {
+            "name": "Schinken",
+            "price": "4,00€"
+          },
+          {
+            "name": "Hot Dog",
+            "price": "6,50€"
+          },
+          {
+            "name": "Sam Club",
+            "desc": "Salat, Tomate, Ei, Schinken",
+            "price": "6,00€"
+          },
+          {
+            "name": "Hähnchen & Rohkost",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "planche",
+        "title": "Platte zum Teilen",
+        "items": [
+          {
+            "name": "Pariser Schinken",
+            "price": "6,00€"
+          },
+          {
+            "name": "Trockene Salami",
+            "price": "8,00€"
+          },
+          {
+            "name": "Terrine",
+            "price": "7,00€"
+          },
+          {
+            "name": "Rillettes",
+            "price": "7,00€"
+          },
+          {
+            "name": "Emmental",
+            "price": "6,50€"
+          },
+          {
+            "name": "Gemischte Platte",
+            "price": "12,00€"
+          }
+        ]
+      },
+      {
+        "id": "fromages",
+        "title": "Käse",
+        "items": [
+          {
+            "name": "Cantal",
+            "price": "7,00€"
+          },
+          {
+            "name": "Emmental oder Coulommiers",
+            "price": "6,00€"
+          },
+          {
+            "name": "Ziegenkäse oder Gruyère",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "desserts",
+        "title": "Desserts",
+        "items": [
+          {
+            "name": "Tarte des Tages",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crème Caramel",
+            "price": "6,00€"
+          },
+          {
+            "name": "Schokoladenmousse",
+            "price": "6,00€"
+          },
+          {
+            "name": "Crème Brûlée",
+            "price": "6,00€"
+          },
+          {
+            "name": "Panna Cotta mit roten Früchten",
+            "price": "6,00€"
+          },
+          {
+            "name": "Tiramisu",
+            "price": "6,00€"
+          },
+          {
+            "name": "Obstsalat",
+            "price": "6,00€"
+          }
+        ]
+      },
+      {
+        "id": "boissons",
+        "title": "Getränke",
+        "type": "boissons",
+        "subsections": [
+          {
+            "title": "Wein im Glas",
+            "cols": [
+              "Wein",
+              "14cl",
+              ""
+            ],
+            "rows": [
+              [
+                "Côtes du Rhône",
+                "4,00€",
+                ""
+              ],
+              [
+                "Sauvignon / Chardonnay",
+                "4,00€",
+                ""
+              ],
+              [
+                "Rosé",
+                "4,00€",
+                ""
+              ],
+              [
+                "Bordeaux",
+                "4,00€",
+                ""
+              ],
+              [
+                "Brouilly",
+                "4,60€",
+                ""
+              ]
+            ]
+          },
+          {
+            "title": "Algerische Weine (Flasche)",
+            "cols": [
+              "Wein",
+              "Format",
+              "Preis"
+            ],
+            "rows": [
+              [
+                "Koutoubia",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Cuvée de Tlemcen",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Saint-Augustin",
+                "75cl",
+                "30,00€"
+              ],
+              [
+                "Boulaouane",
+                "75cl",
+                "30,00€"
+              ]
+            ]
+          },
+          {
+            "title": "Mineralwasser",
+            "cols": [
+              "Wasser",
+              "50cl",
+              "1L"
+            ],
+            "rows": [
+              [
+                "Vittel",
+                "4,00€",
+                "6,00€"
+              ],
+              [
+                "Badoit",
+                "4,00€",
+                "7,00€"
+              ],
+              [
+                "Perrier",
+                "4,40€",
+                "—"
+              ]
+            ]
+          },
+          {
+            "title": "Bier vom Fass",
+            "cols": [
+              "Bier",
+              "25cl",
+              "50cl"
+            ],
+            "rows": [
+              [
+                "Stella",
+                "3,70€",
+                "7,00€"
+              ],
+              [
+                "Heineken",
+                "4,00€",
+                "7,50€"
+              ],
+              [
+                "1664",
+                "4,00€",
+                "7,50€"
+              ],
+              [
+                "Leffe",
+                "4,30€",
+                "7,80€"
+              ],
+              [
+                "Hoegaarden",
+                "4,40€",
+                "7,80€"
+              ]
+            ]
+          },
+          {
+            "title": "Bier in der Flasche",
+            "cols": [
+              "Bier",
+              "",
+              "Preis"
+            ],
+            "rows": [
+              [
+                "Heineken",
+                "",
+                "4,00€"
+              ],
+              [
+                "1664",
+                "",
+                "4,00€"
+              ],
+              [
+                "Leffe",
+                "",
+                "4,30€"
+              ],
+              [
+                "Hoegaarden",
+                "",
+                "4,40€"
+              ],
+              [
+                "Monaco",
+                "",
+                "4,00€"
+              ]
+            ]
+          },
+          {
+            "title": "Alkoholfreies Bier",
+            "simple": [
+              {
+                "name": "Super Bock",
+                "price": "3,50€"
+              }
+            ]
+          },
+          {
+            "title": "Softdrinks",
+            "cols": [
+              "Softdrink",
+              "Format",
+              "Preis"
+            ],
+            "rows": [
+              [
+                "Coca-Cola",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Coca-Cola Zero",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Fanta Orange",
+                "33cl",
+                "4,40€"
+              ],
+              [
+                "Schweppes Indian Tonic",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Schweppes Zitrus",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Orangina",
+                "25cl",
+                "4,40€"
+              ],
+              [
+                "Ice Tea",
+                "25cl",
+                "4,40€"
+              ]
+            ]
+          },
+          {
+            "title": "Fruchtsäfte",
+            "simple": [
+              {
+                "name": "Fruchtsaft",
+                "price": "4,00€"
+              },
+              {
+                "name": "Tomatensaft",
+                "price": "5,00€"
+              },
+              {
+                "name": "Diabolo",
+                "price": "4,00€"
+              },
+              {
+                "name": "Limonade",
+                "price": "3,50€"
+              },
+              {
+                "name": "Sirup mit Wasser",
+                "price": "3,00€"
+              },
+              {
+                "name": "Kalte Milch",
+                "price": "3,00€"
+              }
+            ]
+          },
+          {
+            "title": "Heißgetränke",
+            "simple": [
+              {
+                "name": "Espresso",
+                "price": "2,40€"
+              },
+              {
+                "name": "Café Crème",
+                "price": "3,50€"
+              },
+              {
+                "name": "Heiße Schokolade",
+                "price": "3,50€"
+              },
+              {
+                "name": "Tee",
+                "price": "3,50€"
+              },
+              {
+                "name": "Heiße Milch",
+                "price": "3,00€"
+              }
+            ]
+          },
+          {
+            "title": "Aperitifs",
+            "simple": [
+              {
+                "name": "Martini",
+                "price": "6,00€"
+              },
+              {
+                "name": "Pastis, Ricard",
+                "price": "4,00€"
+              },
+              {
+                "name": "Portwein",
+                "price": "4,00€"
+              },
+              {
+                "name": "Suze",
+                "price": "4,00€"
+              },
+              {
+                "name": "Kir",
+                "price": "4,00€"
+              },
+              {
+                "name": "Whisky J&B",
+                "price": "6,50€"
+              },
+              {
+                "name": "Spritz",
+                "price": "7,00€"
+              }
+            ]
+          },
+          {
+            "title": "Whiskies",
+            "simple": [
+              {
+                "name": "J&B",
+                "price": "6,50€"
+              },
+              {
+                "name": "Campbell",
+                "price": "6,50€"
+              },
+              {
+                "name": "Chivas",
+                "price": "8,00€"
+              },
+              {
+                "name": "Johnny Walker",
+                "price": "7,50€"
+              },
+              {
+                "name": "Jack Daniel's",
+                "price": "8,00€"
+              },
+              {
+                "name": "Black Label",
+                "price": "8,00€"
+              }
+            ]
+          },
+          {
+            "title": "Liköre",
+            "simple": [
+              {
+                "name": "Rum",
+                "price": "5,00€"
+              },
+              {
+                "name": "Calvados",
+                "price": "5,00€"
+              },
+              {
+                "name": "Armagnac",
+                "price": "7,00€"
+              },
+              {
+                "name": "Mirabelle",
+                "price": "7,50€"
+              },
+              {
+                "name": "Cognac",
+                "price": "7,00€"
+              },
+              {
+                "name": "Get 27",
+                "price": "6,50€"
+              },
+              {
+                "name": "Poire Williams",
+                "price": "7,50€"
+              }
+            ]
+          },
+          {
+            "title": "Cocktails",
+            "simple": [
+              {
+                "name": "Punch Rum",
+                "price": "7,00€"
+              },
+              {
+                "name": "Mojito",
+                "price": "7,00€"
+              },
+              {
+                "name": "Chiraya'o Cocktail",
+                "price": "7,00€"
+              },
+              {
+                "name": "Pina Colada",
+                "price": "8,00€"
+              },
+              {
+                "name": "Swimming Pool",
+                "price": "8,00€"
+              },
+              {
+                "name": "Vodka Daisy",
+                "price": "8,00€"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+
+let currentLang = 'fr';
+let currentView = 'home'; // 'home' or 'section'
+let currentSection = 0;
+
+function setLang(lang, btn) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-bar button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function goHome() {
+  currentView = 'home';
+  render();
+}
+
+function showSection(i) {
+  currentSection = i;
+  currentView = 'section';
+  render();
+}
+
+function renderTableRow(sub, row) {
+  // Hide empty 2nd/3rd columns gracefully
+  const cells = [];
+  for (let i = 1; i < row.length; i++) {
+    if (row[i] !== '') cells.push(`<span class="price">${row[i]}</span>`);
+  }
+  return `<div class="table-row" style="grid-template-columns: 1fr ${cells.map(()=>'auto').join(' ')};"><span class="name">${row[0]}</span>${cells.join('')}</div>`;
+}
+
+function render() {
+  const t = translations[currentLang];
+  const backContainer = document.getElementById('back-bar-container');
+  const content = document.getElementById('content');
+
+  if (currentView === 'home') {
+    backContainer.innerHTML = '';
+    let html = '<div class="home-list">';
+    t.tabs.forEach((tab, i) => {
+      html += `<button class="home-item" onclick="showSection(${i})">
+        <span class="home-text"><span class="home-name">${tab}</span></span>
+        <span class="home-chevron">›</span>
+      </button>`;
+    });
+    html += '</div>';
+    content.innerHTML = html;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  // Section view
+  backContainer.innerHTML = `<div class="back-bar">
+    <button class="back-btn" onclick="goHome()">‹ Menu</button>
+    <span class="back-current">${t.tabs[currentSection]}</span>
+  </div>`;
+
+  const s = t.sections[currentSection];
+  let html = `<div class="section active" id="${s.id}">`;
+  html += `<div class="section-title"><h2>${s.title}</h2></div>`;
+
+  if (s.type === 'menus') {
+    html += `<div class="hh-card">
+      <div class="hh-title">${s.hh.title}</div>
+      <div class="hh-hours">${s.hh.hours}</div>
+      <div class="hh-items">
+        ${s.hh.items.map(it => `<div class="hh-item">
+          <div class="hh-item-name">${it.name}</div>
+          ${it.sub ? `<div class="hh-item-sub">${it.sub}</div>` : ''}
+          <div class="hh-item-price">${it.price}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+    s.formules.forEach(f => {
+      html += `<div class="formule">
+        <div class="formule-name">${f.name}</div>
+        <div class="formule-desc">${f.desc.replace(/\n/g,'<br>')}</div>
+        <div class="formule-price">${f.price}</div>
+      </div>`;
+    });
+  } else if (s.type === 'boissons') {
+    s.subsections.forEach(sub => {
+      html += `<div class="sub-title"><h3>${sub.title}</h3></div>`;
+      if (sub.simple) {
+        sub.simple.forEach(it => {
+          html += `<div class="item"><div class="item-left"><div class="item-name">${it.name}</div></div><div class="item-price">${it.price}</div></div>`;
+        });
+      } else {
+        const hasCol2 = sub.cols[1] !== '';
+        const hasCol3 = sub.cols[2] !== '';
+        html += `<div class="table-header"><span>${sub.cols[0]}</span>${hasCol2?`<span class="col-right">${sub.cols[1]}</span>`:''}${hasCol3?`<span class="col-right">${sub.cols[2]}</span>`:''}</div>`;
+        sub.rows.forEach(row => {
+          html += renderTableRow(sub, row);
+        });
+      }
+    });
+  } else {
+    s.items.forEach(it => {
+      html += `<div class="item">
+        <div class="item-left">
+          <div class="item-name">${it.name}</div>
+          ${it.desc ? `<div class="item-desc">${it.desc}</div>` : ''}
+        </div>
+        <div class="item-price">${it.price}</div>
+      </div>`;
+    });
+    if (s.note) html += `<p class="note">${s.note}</p>`;
+  }
+
+  html += '</div>';
+  content.innerHTML = html;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+render();
+</script>
+
+</body>
+</html>
